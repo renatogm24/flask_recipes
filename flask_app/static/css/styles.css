@@ -1,0 +1,10 @@
+body::before {
+    display: block;
+    content: "";
+    height: 90px;
+}
+
+.erroBx {
+    background-color: #f7d6d9;
+    color: #813137;
+}

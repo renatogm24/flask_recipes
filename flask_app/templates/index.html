@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+</head>
+
+<body class="bg-light">
+    <nav class="navbar fixed-top navbar-dark bg-dark text-light">
+        <div class="container">
+            <h1>Recipes</h1>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row justify-content-evenly">
+            <div class="px-5 px-sm-0 col-sm-6 col-md-4 mb-5">
+                <h2 class="text-center mb-3">Register</h2>
+
+                <form class="row g-2 justify-content-center bg-dark text-light py-4 px-3 rounded" action="/register/user" method="post" novalidate>
+                    {% with messages = get_flashed_messages(category_filter=["signup"]) %} {% if messages %}
+                    <div class="bg-danger rounded-3">
+                        {% for message in messages %}
+                        <p>{{message}}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %} {% endwith %}
+                    <label for="first_name" class="form-label">First Name:</label>
+                    <input type="text" name="first_name" class="form-control" id="first_name" />
+                    <label for="last_name" class="form-label">Last Name:</label>
+                    <input type="text" name="last_name" class="form-control" id="last_name" />
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" name="email" class="form-control" id="email" />
+                    <label for="password" class="form-label">Password:</label>
+                    <input type="password" name="password" class="form-control" id="password" />
+                    <label for="repeat_password" class="form-label">Repeat password:</label
+        >
+        <input
+          type="password"
+          name="repeat_password"
+          class="form-control"
+          id="repeat_password"
+        />
+        <input
+          class="btn btn-outline-light mt-3"
+          type="submit"
+          value="Send"
+        />
+      </form></div>
+            <div class="px-5 px-sm-0 col-sm-6 col-md-4"><h2 class="text-center mb-3">Login</h2>
+
+              <form
+                class="row g-2 justify-content-center bg-secondary text-light py-4 px-3 rounded"
+                action="/login"
+                method="post"
+                novalidate
+              >
+                {% with messages = get_flashed_messages(category_filter=["login"])
+                %} {% if messages %} 
+                <div class="bg-danger rounded-3">
+                {% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %} 
+              </div>
+                {% endif %} {% endwith %}
+  
+                <label for="email" class="form-label">Email:</label>
+                    <input type="email" name="email" class="form-control" id="email" />
+                    <label for="password" class="form-label">Password:</label>
+                    <input type="password" name="password" class="form-control" id="password" />
+                    <input class="btn btn-outline-light mt-3" type="submit" value="Send" />
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
