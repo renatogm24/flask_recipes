@@ -51,6 +51,14 @@
                         Yes
                       </label>
                     </div>
+                    <label for="name" class="form-label mt-3">Select ingredient(s):</label> {% for alimento in alimentos %}
+                    <div class="form-check">
+                        <input class="form-check-input" name="foodOption" type="checkbox" value={{alimento.id}} id="flexCheckDefault" {{ "checked" if alimento.checked=='1' }}>
+                        <label class="form-check-label" for="flexCheckDefault">
+                        {{alimento.name}}
+                      </label>
+                    </div>
+                    {% endfor %}
                     <button class="btn btn-primary mt-4" type="submit">Save recipe</button>
                 </div>
             </form>

@@ -20,12 +20,12 @@ class User:
     @classmethod
     def save(cls, data ):
         query = "INSERT INTO users (first_name, last_name, email , password, created_at, updated_at ) VALUES ( %(first_name)s , %(last_name)s ,%(email)s ,%(password)s ,NOW() , NOW() );"
-        return connectToMySQL('flask_recipes').query_db( query, data )
+        return connectToMySQL('flask_recipes_w_checkbox').query_db( query, data )
 
     @classmethod
     def get_user_by_email(cls,data):
         query = "SELECT * FROM users WHERE email = %(email)s;"
-        results = connectToMySQL('flask_recipes').query_db(query,data)
+        results = connectToMySQL('flask_recipes_w_checkbox').query_db(query,data)
         if len(results) < 1:
           return False
         return cls(results[0])
@@ -33,7 +33,7 @@ class User:
     @classmethod
     def get_user_by_id(cls,data):
         query = "SELECT * FROM users WHERE id = %(id)s;"
-        results = connectToMySQL('flask_recipes').query_db(query,data)
+        results = connectToMySQL('flask_recipes_w_checkbox').query_db(query,data)
         if len(results) < 1:
           return False
         return cls(results[0])
@@ -41,7 +41,7 @@ class User:
     @classmethod
     def get_user_with_recipes_by_id(cls,data):
         query = "SELECT * FROM users left join recipes on users.id = recipes.user_id WHERE users.id = %(id)s;"
-        results = connectToMySQL('flask_recipes').query_db(query,data)
+        results = connectToMySQL('flask_recipes_w_checkbox').query_db(query,data)
         if len(results) < 1:
           return False
         user = cls(results[0])
@@ -62,7 +62,7 @@ class User:
     @classmethod
     def get_users_except_id(cls,data):
         query = "SELECT * FROM users WHERE id != %(id)s;"
-        results = connectToMySQL('flask_recipes').query_db(query,data)
+        results = connectToMySQL('flask_recipes_w_checkbox').query_db(query,data)
         users = []
         if len(results) < 1:
           return False
@@ -73,7 +73,7 @@ class User:
     @classmethod
     def exist_mail(cls,data):
         query = "SELECT * FROM users where email = %(email)s;"
-        results = connectToMySQL('flask_recipes').query_db(query,data)
+        results = connectToMySQL('flask_recipes_w_checkbox').query_db(query,data)
         print(results)
         if len(results) == 0:
           return False

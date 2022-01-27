@@ -33,6 +33,7 @@
                 <li>Under 30 min : Yes</li>
                 {% endif %}
                 <li>Made on : {{recipeObj.made_at}}</li>
+                <li>Ingredients : {{ recipeObj.ingredientes|join(', ', attribute='name') }}</li>
             </ul>
         </div>
     </div>
