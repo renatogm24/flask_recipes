@@ -10,8 +10,8 @@ def index():
     return redirect("/dashboard")
   return render_template("index.html")
 
-@app.route('/')
-def index():
+@app.route('/test')
+def index2():
   return render_template("index2.html")
 
 @app.route('/register/user', methods=['POST'])
