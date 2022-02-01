@@ -10,6 +10,10 @@ def index():
     return redirect("/dashboard")
   return render_template("index.html")
 
+@app.route('/')
+def index():
+  return render_template("index2.html")
+
 @app.route('/register/user', methods=['POST'])
 def register():
     if not user.User.validate_user(request.form):
